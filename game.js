@@ -1,7 +1,7 @@
 console.log("Hello World")
 
 let getComputerChoice = () => {
-    let choice = Math.floor(Math.random() * 3);
+    let choice = Math.floor(Math.random() * 3); //Math.floor rounds down values + Math.random returns a value >= 0 or < max"
     if (choice === 0) { return "rock" }
     if (choice === 1) { return "paper" }
     else { return "scissors" }
