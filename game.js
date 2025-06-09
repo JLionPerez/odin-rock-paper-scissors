@@ -58,9 +58,9 @@ let playGame = () => {
     }
 
     // 5 rounds
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(getHumanChoice(), getComputerChoice()))
-    }
+    // for (let i = 0; i < 5; i++) {
+    //     console.log(playRound(getHumanChoice(), getComputerChoice()))
+    // }
 
     // final scores
     console.log ("Your Score: " + humanScore + " Computer Score: " + computerScore)
