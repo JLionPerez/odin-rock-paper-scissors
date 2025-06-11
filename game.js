@@ -5,64 +5,74 @@ let getComputerChoice = () => {
     else { return "scissors" }
 }
 
-// let getHumanChoice = () => {
-//     let choice = prompt("What is your choice? ")
-//     if (choice.toLowerCase() === "rock" ) { return "rock" }
-//     if (choice.toLowerCase() === "paper") { return "paper" }
-//     if (choice.toLowerCase() === "scissors") {return "scissors" }
-// }
-
 let playGame = () => {
     let humanScore = 0;
     let computerScore = 0;
+
     const playerScore = document.querySelector("#player-score");
+    playerScore.textContent = "Your score: " + humanScore;
+    
     const pcScore = document.querySelector("#pc-score");
+    pcScore.textContent = "Computer score: " + computerScore;
+   
     const results = document.querySelector(".results");
 
     let playRound = (humanChoice, computerChoice) => {
         //human chooses rock
         if ((humanChoice === "rock") && (computerChoice === "rock")) {
-            results.textContent = "It's a tie!";
+            results.textContent = "Both of you chose Rock.";
         }
         if ((humanChoice === "rock") && (computerChoice === "paper")) {
             computerScore++;
             pcScore.textContent = "Computer score: " + computerScore;
-            results.textContent = "You lose! Paper beats Rock."
+            results.textContent = "Paper beats Rock."
         }
         if ((humanChoice === "rock") && (computerChoice === "scissors")) {
             humanScore++;
             playerScore.textContent = "Your score: " + humanScore;
-            results.textContent = "You win! Rock beats Scissors."
+            results.textContent = "Rock beats Scissors."
         }
     
         //human chooses paper
         if ((humanChoice === "paper") && (computerChoice === "rock")) {
             humanScore++;
             playerScore.textContent = "Your score: " + humanScore;
-            results.textContent = "You win! Paper beats Rock."
+            results.textContent = "Paper beats Rock."
         }
         if ((humanChoice === "paper") && (computerChoice === "paper")) {
-            results.textContent = "It's a tie!"
+            results.textContent = "Both of you chose Paper."
         }
         if ((humanChoice === "paper") && (computerChoice === "scissors")) {
             computerScore++;
             pcScore.textContent = "Computer score: " + computerScore;
-            results.textContent = "You lose! Scissors beats Paper."
+            results.textContent = "Scissors beats Paper."
         }
     
         //human chooses scissors
         if ((humanChoice === "scissors") && (computerChoice === "rock")) {
             computerScore++;
             pcScore.textContent = "Computer score: " + computerScore;
-            results.textContent = "You lose! Rock beats Scissors."
+            results.textContent = "Rock beats Scissors."
         }
         if ((humanChoice === "scissors") && (computerChoice === "paper")) {
             humanScore++;
             playerScore.textContent = "Your score: " + humanScore;
-            results.textContent = "You win! Scissors beats Paper."
+            results.textContent = "Scissors beats Paper."
         }
         if ((humanChoice === "scissors") && (computerChoice === "scissors")) {
-            results.textContent = "It's a tie!"
+            results.textContent = "Both of you chose Scissors."
+        }
+
+        // check for final score
+        if (humanScore === 5 || computerScore === 5) {
+            if (humanScore > computerScore) { results.textContent = "You win the game!"}
+            if (humanScore === computerScore) { results.textContent = "The game ends in a tie."}
+            if (humanScore < computerScore) { results.textContent = "You lose the game."}
+
+            humanScore = 0;
+            computerScore = 0;
+            playerScore.textContent = "Your score: " + humanScore;
+            pcScore.textContent = "Computer score: " + computerScore;
         }
     }
 
@@ -81,11 +91,6 @@ let playGame = () => {
     scissorsBtn.addEventListener("click", () => {
         console.log(playRound("scissors", getComputerChoice()));
     });
-
-    if (humanScore > computerScore) { return "You win the game!"}
-    if (humanScore === computerScore) { return "The game ends in a tie."}
-    if (humanScore < computerScore) { return "You lose the game."}
-
 }
 
-console.log(playGame())
+playGame()
