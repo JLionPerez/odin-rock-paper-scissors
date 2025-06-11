@@ -57,8 +57,21 @@ let playGame = () => {
         }
     }
 
-    // plays a round of game
-    console.log(playRound(getHumanChoice(), getComputerChoice()))
+    // button events
+    const rockBtn = document.querySelector("#rock");
+    rockBtn.addEventListener("click", () => {
+        console.log(playRound("rock", getComputerChoice()));
+    });
+
+    const paperBtn = document.querySelector("#paper");
+    paperBtn.addEventListener("click", () => {
+        console.log(playRound("paper", getComputerChoice()));
+    });
+
+    const scissorsBtn = document.querySelector("#scissors");
+    scissorsBtn.addEventListener("click", () => {
+        console.log(playRound("scissors", getComputerChoice()));
+    });
 
     // final scores
     console.log ("Your Score: " + humanScore + " Computer Score: " + computerScore)
