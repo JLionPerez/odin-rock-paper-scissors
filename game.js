@@ -5,16 +5,17 @@ let getComputerChoice = () => {
     else { return "scissors" }
 }
 
-let getHumanChoice = () => {
-    let choice = prompt("What is your choice? ")
-    if (choice.toLowerCase() === "rock" ) { return "rock" }
-    if (choice.toLowerCase() === "paper") { return "paper" }
-    if (choice.toLowerCase() === "scissors") {return "scissors" }
-}
+// let getHumanChoice = () => {
+//     let choice = prompt("What is your choice? ")
+//     if (choice.toLowerCase() === "rock" ) { return "rock" }
+//     if (choice.toLowerCase() === "paper") { return "paper" }
+//     if (choice.toLowerCase() === "scissors") {return "scissors" }
+// }
 
 let playGame = () => {
     let humanScore = 0;
     let computerScore = 0;
+    const playerScore = document.querySelector("#player-score");
 
     let playRound = (humanChoice, computerChoice) => {
         //human chooses rock
@@ -27,12 +28,14 @@ let playGame = () => {
         }
         if ((humanChoice === "rock") && (computerChoice === "scissors")) {
             humanScore++;
+            playerScore.textContent = "Your score: " + humanScore;
             return "You win! Rock beats Scissors."
         }
     
         //human chooses paper
         if ((humanChoice === "paper") && (computerChoice === "rock")) {
             humanScore++;
+            playerScore.textContent = "Your score: " + humanScore;
             return "You win! Paper beats Rock."
         }
         if ((humanChoice === "paper") && (computerChoice === "paper")) {
@@ -50,6 +53,7 @@ let playGame = () => {
         }
         if ((humanChoice === "scissors") && (computerChoice === "paper")) {
             humanScore++;
+            playerScore.textContent = "Your score: " + humanScore;
             return "You win! Scissors beats Paper."
         }
         if ((humanChoice === "scissors") && (computerChoice === "scissors")) {
@@ -74,7 +78,7 @@ let playGame = () => {
     });
 
     // final scores
-    console.log ("Your Score: " + humanScore + " Computer Score: " + computerScore)
+    // console.log ("Your Score: " + humanScore + " Computer Score: " + computerScore)
 
     if (humanScore > computerScore) { return "You win the game!"}
     if (humanScore === computerScore) { return "The game ends in a tie."}
