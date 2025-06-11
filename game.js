@@ -16,6 +16,7 @@ let playGame = () => {
     let humanScore = 0;
     let computerScore = 0;
     const playerScore = document.querySelector("#player-score");
+    const pcScore = document.querySelector("#pc-score");
 
     let playRound = (humanChoice, computerChoice) => {
         //human chooses rock
@@ -24,6 +25,7 @@ let playGame = () => {
         }
         if ((humanChoice === "rock") && (computerChoice === "paper")) {
             computerScore++;
+            pcScore.textContent = "Computer score: " + computerScore;
             return "You lose! Paper beats Rock."
         }
         if ((humanChoice === "rock") && (computerChoice === "scissors")) {
@@ -43,12 +45,14 @@ let playGame = () => {
         }
         if ((humanChoice === "paper") && (computerChoice === "scissors")) {
             computerScore++;
+            pcScore.textContent = "Computer score: " + computerScore;
             return "You lose! Scissors beats Paper."
         }
     
         //human chooses scissors
         if ((humanChoice === "scissors") && (computerChoice === "rock")) {
             computerScore++;
+            pcScore.textContent = "Computer score: " + computerScore;
             return "You lose! Rock beats Scissors."
         }
         if ((humanChoice === "scissors") && (computerChoice === "paper")) {
