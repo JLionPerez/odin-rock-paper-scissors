@@ -5,6 +5,16 @@
     flex-direction: column;
 }
 
+.scores {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 button {
     margin: 5px;
+}
+
+.results {
+    height: 20px;
 }
